@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Oleo+Script:wght@400;700&family=Righteous&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="test.css">
+    <title>Test</title>
+</head>
+
+<body>
+    <div class="input-form">
+        <h2>Alien Number</h2>
+        <form id="submit-form">
+            <input type="text" class="number" id="inputText" required>
+            <input type="submit" class="submit" value="Submit">
+            <p id="summary" style="display: block;">Output : 0</p>
+        </form>
+    </div>
+</body>
+<script>
+    document.getElementById('submit-form').addEventListener('submit', function (e) {
+
+        e.preventDefault();
+        AlienNum();
+        document.getElementById("submit-form").reset();
+
+    });
+   
+    function AlienNum() {
+        var text = document.getElementById("inputText").value;
+        var sum = 0;
+        var j = 0;
+        var charText = text.split('');
+
+        for (let i = 0; i < charText.length; i += j) {
+            switch (true) {
+                case charText[i] === "A" && charText[i + 1] === "B":
+                    sum += 4;
+                    j = 2;
+                    break;
+                case charText[i] === "A" && charText[i + 1] === "Z":
+                    sum += 9;
+                    j = 2;
+                    break;
+                case charText[i] === "Z" && charText[i + 1] === "L":
+                    sum += 40;
+                    j = 2;
+                    break;
+                case charText[i] === "Z" && charText[i + 1] === "C":
+                    sum += 90;
+                    j = 2;
+                    break;
+                case charText[i] === "C" && charText[i + 1] === "D":
+                    sum += 400;
+                    j = 2;
+                    break;
+                case charText[i] === "C" && charText[i + 1] === "R":
+                    sum += 900;
+                    j = 2;
+                    break;
+                case charText[i] === "A" && charText[i + 1] !== "B" && charText[i + 1] !== "Z":
+                    sum += 1;
+                    j = 1;
+                    break;
+                case charText[i] === "B":
+                    sum += 5;
+                    j = 1;
+                    break;
+                case charText[i] === "Z" && charText[i + 1] !== "L" && charText[i + 1] !== "C":
+                    sum += 10;
+                    j = 1;
+                    break;
+                case charText[i] === "L":
+                    sum += 50;
+                    j = 1;
+                    break;
+
+                case charText[i] === "C" && charText[i + 1] !== "D" && charText[i + 1] !== "R":
+                    sum += 100;
+                    j = 1;
+                    break;
+
+                case charText[i] === "D":
+                    sum += 500;
+                    j = 1;
+                    break;
+                case charText[i] === "R":
+                    sum += 1000;
+                    j = 1;
+                    break;
+                default:
+                    j = 1;
+                    break;
+
+            }
+            console.log("sum is :" + sum);
+        }
+
+        console.log("Results is :" + sum);
+        // document.getElementById("summary").style.display = 'block';
+        document.getElementById("summary").innerHTML = "<p> Output : " + sum + "</p>";
+    }
+
+</script>
+
+</html>
